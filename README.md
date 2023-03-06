@@ -34,7 +34,7 @@ mvn clean install
 ```
 - Build and push the template in Artifact Registry of GCP using command 
 ```
-gcloud dataflow flex-template build gs://<bucket-path-with-folder>/dataflow-template.json --image-gcr-path="<artifact-registry-path>/dataflow:latest" --sdk-language=JAVA --flex-template-base-image=JAVA11 --jar="<full-path-of-your-cloned-folder>\target\pubsub-to-bigquery-1.0.0.jar" --env=FLEX_TEMPLATE_JAVA_MAIN_CLASS="com.crosscutdata.streaming.StreamingPipeline"
+gcloud dataflow flex-template build gs://<bucket-path-with-folder>/dataflow-template.json --image-gcr-path="<artifact-registry-path>/dataflow:latest" --sdk-language=JAVA --flex-template-base-image=JAVA11 --jar="<full-path-of-your-cloned-folder>\target\streaming-1.0.0.jar" --env=FLEX_TEMPLATE_JAVA_MAIN_CLASS="com.crosscutdata.streaming.StreamingPipeline"
 ```
 - Deploy the template in Dataflow of GCP using command 
 ```
