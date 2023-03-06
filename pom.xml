@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.crosscutdata</groupId>
-	<artifactId>pubsub-to-bigquery</artifactId>
+	<artifactId>streaming</artifactId>
 	<version>1.0.0</version>
 
 	<packaging>jar</packaging>
