@@ -17,7 +17,7 @@ public class StreamingPipeline {
 
 		// This example reads from a public dataset containing the text of King Lear.
 		PCollection<String> input = p.apply("Read", TextIO.read().from("gs://apache-beam-samples/shakespeare/kinglear.txt"));
-		PDone done = input.apply("Write", TextIO.write().to("gs://bucket-wissen/dataflow/output-2.txt"));
+		PDone done = input.apply("Write", TextIO.write().to("gs://crosscutdata-bucket/dataflow/output.txt"));
 
 		PipelineResult result = p.run();
 		try {
