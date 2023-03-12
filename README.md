@@ -34,10 +34,10 @@ mvn clean install
 ```
 - Build and push the template in Artifact Registry of GCP using command 
 ```
-gcloud dataflow flex-template build gs://<bucket-path-with-folder>/dataflow-template.json --image-gcr-path="<artifact-registry-path>/dataflow:latest" --sdk-language=JAVA --flex-template-base-image=JAVA11 --jar="<full-path-of-your-cloned-folder>\target\pipeline-1.1.0.jar" --env=FLEX_TEMPLATE_JAVA_MAIN_CLASS="com.crosscutdata.pipeline.textio.TextIOPipeline"
+gcloud dataflow flex-template build gs://<BUCKET_PATH_WITH_FOLDER>/dataflow-template.json --image-gcr-path="<ARTIFACT_REGISTRY_PATH>/dataflow:latest" --sdk-language=JAVA --flex-template-base-image=JAVA11 --jar="<FULL_PATH_OF_YOUR_CLONED_FOLDER>\target\pipeline-<VERSION>.jar" --env=FLEX_TEMPLATE_JAVA_MAIN_CLASS="com.crosscutdata.pipeline.textio.TextIOPipeline"
 ```
 - Deploy the template in Dataflow of GCP using command 
 ```
-gcloud dataflow flex-template run "data-pipeline" --template-file-gcs-location="gs://<bucket-path-with-folder>/dataflow-template.json"
+gcloud dataflow flex-template run "data-pipeline" --template-file-gcs-location="gs://<BUCKET_PATH_WITH_FOLDER>/dataflow-template.json"
 ```
 - Go to GCP Dataflow console to check
