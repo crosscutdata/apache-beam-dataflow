@@ -22,7 +22,7 @@ public class TextIOPipeline {
 		
 		PCollection<String> transformedData = extractedData.apply("Transform", ParDo.of(new Transformation()));
 		
-		PDone done = transformedData.apply("Load", TextIO.write().to("gs://bucket-wissen/dataflow/transformed-output.txt"));
+		PDone done = transformedData.apply("Load", TextIO.write().to("gs://crosscutdata-bucket/dataflow/transformed-output.txt"));
 
 		
 		PipelineResult result = p.run();
