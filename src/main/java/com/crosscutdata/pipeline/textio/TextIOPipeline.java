@@ -8,8 +8,6 @@ import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PCollectionTuple;
-import org.apache.beam.sdk.values.PDone;
-import org.apache.beam.sdk.values.TupleTag;
 import org.apache.beam.sdk.values.TupleTagList;
 
 
@@ -24,7 +22,7 @@ public class TextIOPipeline {
 
 		
 		// load zillow data from GCS
-		PCollection<String> extractedData = p.apply("Extract", TextIO.read().from("gs://bucket-wissen/dataflow/zillow.csv"));
+		PCollection<String> extractedData = p.apply("Extract", TextIO.read().from("gs://crosscutdata-bucket/dataflow/zillow.csv"));
 		
 		// execute Transform to calculate price per sqft for houses
 		PCollectionTuple transformedTuple = extractedData.apply("Transform", ParDo.of(new Transformation())
@@ -33,12 +31,12 @@ public class TextIOPipeline {
 		//save data for known sized house
 		transformedTuple.get(Transformation.VALID_DATA_TAG)
 				.setCoder(StringUtf8Coder.of())
-				.apply("Save Result", TextIO.write().to("gs://bucket-wissen/dataflow/zillow-result.txt"));
+				.apply("Save Result", TextIO.write().to("gs://crosscutdata-bucket/dataflow/zillow-result.txt"));
 		
 		//handle exception for unknown sized house
 		transformedTuple.get(Transformation.FAILURE_DATA_TAG)
 				.setCoder(StringUtf8Coder.of())
-				.apply("Unknown Sqft Data", TextIO.write().to("gs://bucket-wissen/dataflow/zillow-unknown.txt"));
+				.apply("Unknown Sqft Data", TextIO.write().to("gs://crosscutdata-bucket/dataflow/zillow-unknown.txt"));
 		
 		
 		PipelineResult result = p.run();
