@@ -1,0 +1,9 @@
+{
+	"source": {
+		"inputFilePath": "gs://crosscutdata-bucket/dataflow/zillow.csv"
+	},
+	"sink": {
+		"successfulOutputFilePath": "gs://crosscutdata-bucket/dataflow/zillow-result.txt",
+		"failedOutputFilePath": "gs://crosscutdata-bucket/dataflow/zillow-unknown.txt"
+	}
+}
