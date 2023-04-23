@@ -38,6 +38,6 @@ gcloud dataflow flex-template build gs://<BUCKET_PATH_WITH_FOLDER>/dataflow-temp
 ```
 - Deploy the template in Dataflow of GCP using command 
 ```
-gcloud dataflow flex-template run "data-pipeline" --template-file-gcs-location="gs://<BUCKET_PATH_WITH_FOLDER>/dataflow-template.json"
+gcloud dataflow flex-template run "data-pipeline" --template-file-gcs-location="gs://<BUCKET_PATH_WITH_FOLDER>/dataflow-template.json" --parameters=configPath=crosscutdata-gcp:crosscutdata-bucket:configs/config_1.3.json
 ```
 - Go to GCP Dataflow console to check
